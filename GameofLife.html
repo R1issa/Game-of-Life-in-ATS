@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+         body{
+            font-family:Times New Roman;
+            color:#000;
+            background-color: #f0f0f0;
+            font-weight:normal;
+        }
+        #hr1{
+          background-color: #f0f0f0;
+          width: 700px;
+        }
+        #hr2{
+          height: 6px;
+        	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+          border: 0;
+        }
+        #hr3{
+          border-top: 1px dashed #8c8b8b;
+        }
+        #hr4{
+          background-color: #fff;
+        	border-top: 2px dashed #8c8b8b;
+          width: 500px;
+        }
+        .row {
+            height: 18px;
+            width: 18px;
+            background-color: #f0f0f0;
+        }
+
+        .gridsquare {
+            border: 1px solid #655454;
+            border-collapse: collapse;
+            width: 15px;
+            height: 15px;
+            text-align: center;
+            float: left;
+            margin-bottom: 1px;
+            margin-right: 2px;
+        }
+
+        .alive {
+            width: 15px;
+            height: 15px;
+        }
+
+        .dead {
+            background-color: #f2f2ef;
+            width: 15px;
+            height: 15px;
+        }
+        #sim{
+            overflow:scroll;
+            height:600px;
+            width:100%;
+            margin-bottom: -100px;
+            overflow:auto;
+        }
+    </style>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.53/Bacon.min.js">
+    </script>
+    <script
+      src="https://ats-lang.github.io/LIBRARY/libatscc2js/libatscc2js_all.js">
+    </script>
+    <script
+      src="https://ats-lang.github.io/LIBRARY/libatscc2js/libatscc2js_baconjs_all.js">
+    </script>
+    <script
+      src="https://ats-lang.github.io/LIBRARY/libatscc2js/libatscc2js_print_store_cats.js">
+    </script>
+    <script
+      src="https://ats-lang.github.io/LIBRARY/libatscc2js/BUCASCS320/words/words_dats.js">
+    </script>
+    <script src="templates.js"> </script>
+    <script src="Cell_dats.js"> </script>
+</head>
+
+<body>
+
+    <h1 style = "font-size:350%; font-weight:normal; text-align: center;">Conway's Game of Life</h1>
+    <hr id = "hr1">
+    <br/>
+    <i style = "font-size:150%;font-weight:normal;"><p>Here is a simple simulation of game of life.</p></i>
+    <hr id = "hr2">
+    <br/>
+    <h2 style = "font-size:300%;font-weight:normal;text-align: center;"> Rules of Simulation </h2>
+    <hr id = "hr4">
+    <br/>
+    <p style = "font-size:150%;font-weight:normal;">
+    <i>
+        <br/> If a cell is alive and has 2 living neighbhors, it lives on to the next round.<br/>
+        <br/> If a cell has 3 living neighbhors, it lives on to the next round.<br/>
+        <br/> Otherwise it either dies of over/under population.<br/>
+    </i>
+    </p>
+    <hr id = "hr3">
+    <h2 style = "font-size:300%;font-weight:normal;text-align: center;"> The Simulation</h2>
+    <hr id = "hr4">
+    <br/>
+    <br/>
+    <button id="simOnce">Simulate Once!</button>
+    <button id="simAll">Simulate!</button>
+    <button id="randConfig">Random!</button>
+    <button id="simlStop">STOP.</button>
+    <button id="resetConfig">Reset.</button>
+    <button id="logic">Logic Build.</button>
+    <br/>
+      Choose the gate you would like
+      <select id="exp">
+        <option value="" selected="selected">Select Below</option>
+        <option value="and">And Gate</option>
+        <option value="or">Or Gate</option>
+        <option value="not">Not Gate</option>
+      </select>
+    <span id="logicontrol"><form style = "font-size:130%">Write the values that you wish to pass to the gate (if you are computing True and False write down "TF" with no spaces):<input type="text" id="expression" value='' size=16></form></span>
+    <br/>
+    <br/>Toroidal Grid (This is off when working with logical expressions): <input type="checkbox" id="torus">
+    <br/>
+      Insert Template: (If the template is too big for the grid, nothing happens) <select id="templates">
+        <option value="" selected="selected">Select Below</option>
+        <option value="default">Default</option>
+        <option value="glider">Glider</option>
+        <option value="glider_gun">Glider Gun Value: True</option>
+        <option value="notTgate">NOT True</option>
+        <option value="glider_gun_false">False</option>
+        <option value="notFgate">NOT False</option>
+        <option value="TandT">True and True</option>
+        <option value="TorT">True or True</option>
+        <option value="glider_gunr">Reversed Glider Gun</option>
+        <option value="blocker">Blocker</option>
+        <option value="eater">Eater</option>
+        <option value="blocker2">Blocker2</option>
+        <option value="blinker">Blinker</option>
+        <option value="ak47">AK47</option>
+        <option value="pentadecathlon">3-Glider Synthesis </option>
+        <option value="gliderduplicator">Glider Duplicator</option>
+        <option value="puffer">Puffer</option>
+        <option value="puffertrain">Puffer Train</option>
+        <option value="frothingpuffer">Frothing Puffer</option>
+        <option value="harvester">Harvester</option>
+        <option value="harvesterru">Harvester Reversed Upsidedown</option>
+        <option value="conduit">Conduit</option>
+        <option value="raker">Space Rakerre</option>
+        <option value="blockpusher">Block Pusher</option>
+        <option value="lightspaceship">Lightweight Spaceship</option>
+        <option value="pentomino">R-Pentomino (highly unstable! Check it out!)</option>
+        <option value="slidegun">Slide Gun </option>
+        <option value="spaceship2">Expanding Spaceship</option>
+        <option value="spaceship3">Side Car </option>
+        <option value="queenbee">Queen Bee Shuttle</option>
+        <option value="goose">Canada Goose</option>
+        <option value="unix">Unix</option>
+        <option value="pulsar">Pulsar</option>
+        <option value="brain">Brain</option>
+        <option value="chemist">Chemist</option>
+      </select>
+      <br/>
+        <p>Number of Steps passed: <span id="counter"> 0 </span></p>
+      <br/>
+    </h3>
+    <span id="gridcontrol"><form onsubmit="return false;" style = "font-size:130%">Grid Size:<input type="text" id="size_n" value='' size=16></input>&nbsp;<input type="submit" value="click!" onclick="Start()"></form></span>
+
+    <div id="sim"> </div>
+    <div id="ass" style="visibility: hidden"> </div>
+    <div id="siass"style="visibility: hidden"></div>
+    <div id="siass2"style="visibility: hidden"></div>
+    <br/><br/>
+    <br/>
+    <br/>
+    <br/>
+    <hr id = "hr3">
+    <p>
+      <i>
+      <br/> Special thanks to the creator of this website for providing the ASCII versions of some nice Game of life patterns
+      <br/> <a href="https://bitstorm.org/gameoflife/lexicon/">https://bitstorm.org/gameoflife/lexicon/</a>
+      <br/>
+      </i>
+    </p>
+</body>
+
+
+</html>

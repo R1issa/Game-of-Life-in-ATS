@@ -1,0 +1,51 @@
+DONE:
+*****
+1- Drawing a grid using javascript.
+2- Handling clicking every cell before and during the simulation.
+3- User can input configuration by clicking.
+4- Simulating the game for one iteration.
+5- Simulating the game indefinetly until user presses Stop.
+   (Press Simulate, then Simulate Once for this feature)
+6- First enter the Grid size for it to be generated
+7- Fixed the "too much recursion" error. It was cause by the "merge" method.
+    Instead I've scanned every click stream in a tail recursive loop.
+    Please wait a bit when entering large grid size. Initialization takes some time
+    because it takes time to initialize streams.
+8- Implemented a Reset button to kill all cells in a grid.
+9- Implemented a Random button to create a random configuration. Random kills or makes a cell alive
+   randomly.
+10- Implemented choosing a template configuration. Scroll down the options menu and choose a template. Then click on the grid cell where youd
+    like the template to be places.The leftmost topmost cell of the template is drawn right where the user clicks.
+    Please remember to scroll down to the option "Default" so as not to keep on adding templates and go back to normal clicking.
+11- I've provided a significant library of configuration templates in "templates.js".You can see and add your own template to this file and
+    create an option for it in the html file.
+12- I've added support for the toroidal or non toroidal grid when adding a template to the boundaries of the grid, thus avoiding any error.
+13- Added a counter which counts the number of steps that have passed in the simulation. This counter is set to 0 when the Reset button is
+    pressed. The counter halts when pressing STOP.
+14- Added the option of letting the user choose whether or not she/he would like to consider the grid a
+    toroidal one.
+15- I tried implementing logic gates (and, or, not), with only two variables that are true or false (so expressions like T and F, T or T and NOT F)
+    I didn't manage to create bigger because my OR gate after compression is around 130 columns wide, and its taking too much time for firefox to generate the gridsquare
+    I have added a template for (T or T), check it out for yourself. Just write your values in the text box(in capital and without space: e.g. TF) and select the gate. Then press "Logic Build".
+    A logic gate produces a T if it outputs a stream of cells that reachs the last row in the grid (and doesnt get killed before) and F otherwise.
+    Please refresh if you want to build a new expression otherwise you will get errors. And PLEASE turn off the toroidal checkbox, otherwise you might
+    kill your logical gates and bombard everything.
+    Please give at least a grid of 100 for NOT and a grid of 160 for both And and OR.
+
+Please Note that if you'd like to slow down/ speed up the simulation go to the comment "TIME SPEED"
+and change the bacon js interval.
+
+Why it works:
+*************
+1- I tested the features.
+2- I used Bacon.js with ATS to handle the clicks representing buttons and
+   cells as streams. I used a type for clicks on cells that saves the location
+   of the cell, this gives me confidence in the code.
+3- Simulation indefinetly depends on the correctness of simulating once by
+   induction. Simulating once is done tail recursively and was tested against
+   know configuration progression. Simulate Once is implemented as a tail recursive
+   loop function which calls a simulation function for every cell. This simplified
+   the code and testing.
+4- In order to ensure that indefinite simulation can occur, I considered the grid
+   as a torus like structure where the bottom and upper rows are connected, and
+   the left and right columns are connected.
