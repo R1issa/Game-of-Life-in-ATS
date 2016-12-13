@@ -1,7 +1,10 @@
-Here is a simple implementation of the game of life using ATS and Bacon JS.<br />
+Here is a simple implementation of the game of life using ATS and Bacon JS.<br /><br/>
+
 First specify your grid size. Then click on the grid to draw a configuration of living cells. The click "Simulate" followed
-by "Simulate Once".<br />
-What you can also do:<br />
+by "Simulate Once".<br /><br/>
+
+What you can also do:<br /><br/>
+
 1. You can make a cell alive or kill a cell at any point during the simulation.<br />
 2. You can add predefined templates.<br />
 3. You can create very very very basic logic gates of no more than 2 non negated Literals in the case of AND & OR,<br />
