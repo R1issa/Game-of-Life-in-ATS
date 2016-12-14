@@ -14,4 +14,4 @@ What you can also do:<br />
 5. Create a Random configuration.<br />
 6. Select whether you'd like a Toroidal grid, or a grid where out of bound cells are considered dead.<br />
 
- <a href="https://r1issa.github.io/Game-of-Life-in-ATS/">Check out the page here</a> 
+window.open(https://r1issa.github.io/Game-of-Life-in-ATS/)
