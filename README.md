@@ -13,3 +13,5 @@ What you can also do:<br />
 4. Reset the grid at any time, and press STOP in order to stop the simulation completely.<br />
 5. Create a Random configuration.<br />
 6. Select whether you'd like a Toroidal grid, or a grid where out of bound cells are considered dead.<br />
+
+ <a href="https://r1issa.github.io/Game-of-Life-in-ATS/">Check out the page here</a> 
