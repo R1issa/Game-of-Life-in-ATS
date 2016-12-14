@@ -60,6 +60,9 @@
             margin-bottom: -100px;
             overflow:auto;
         }
+        #p1 {
+           text-indent: 50px;
+        }
     </style>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
@@ -112,17 +115,19 @@
       by "Simulate Once".<br />
 
       <br />What you can also do:<br />
-
-    <br/>   1. You can make a cell alive or kill a cell at any point during the simulation by just clicking on it.<br />
+    <p id ="p1">
+    <br/>   1.You can make a cell alive or kill a cell at any point during the simulation by just clicking on it.<br />
     <br/>   2. You can add predefined templates. Select one in templates, then click on a grid cell where you'd like to place input.<br />
               (Note that the place where you click will be the topmost leftmost cell in the template)<br />
     <br/>   3. You can create very very very basic logic gates of no more than 2 non negated Literals in the case of AND & OR,
-               and 1 Literal in the case of a NOT gate.<br /> Just choose youre gate, then type your values in the text box
+               and 1 Literal in the case of a NOT gate.<br />
+               Just choose youre gate, then type your values in the text box
                in the form of "TF" (they have to be capitalized and not seperated by a space). Finally press Logic build.<br />
     <br/>   4. Reset the grid at any time, and press STOP in order to stop the simulation completely.<br />
     <br/>   5. Create a Random configuration.<br />
    <br/>    6. Select whether you'd like a Toroidal grid, or a grid where out of bound cells are considered dead.<br/>
     </i>
+    </p >
     </p>
     <hr id = "hr3">
 
